@@ -9,17 +9,13 @@ pub fn execute() {
 
     match input.parse::<u32>() {
         Ok(decimal_number) => {
-            // Convert to hexadecimal and binary
             let hex_string = format!("{:X}", decimal_number);
             let binary_string = format!("{:b}", decimal_number);
-
-            // Display the results
             println!("Decimal: {}", decimal_number);
             println!("Hexadecimal: 0x{}", hex_string);
             println!("Binary: 0b{}", binary_string);
         }
         Err(_) => {
-            // Handle invalid input
             println!("'{}' is not a valid decimal number.", input);
         }
     }
