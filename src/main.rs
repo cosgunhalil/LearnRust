@@ -5,6 +5,7 @@ mod placeholder_http_requester;
 mod decimal_to_binary_and_hexadecimal_sample;
 mod write_data_to_local_db_sample;
 mod id_service;
+mod log_example;
 
 #[tokio::main]
 async fn main() {
@@ -13,7 +14,8 @@ async fn main() {
         "Fetch Placeholder JSON",
         "Convert Decimal to Binary and Hexadecimal",
         "Write a Sample Data to Local DB as Binary",
-        "ID Service Example"
+        "ID Service Example",
+        "Simple Log Example"
     ];
 
     match Select::new("Select an option:", Vec::from(&options)).prompt() {
@@ -35,7 +37,10 @@ async fn main() {
                 if let Err(e) = id_service::start_id_service().await {
                     eprintln!("Error starting ID Service: {}", e);
                 }
-            }
+            },
+            "Simple Log Example" => {
+                log_example::execute()
+            },
             _ => unreachable!("Unexpected choice"),
         },
         Err(_) => println!("There was an error, please try again."),
