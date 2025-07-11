@@ -1,3 +1,4 @@
+// src/main.rs
 use inquire::Select;
 
 mod guess_the_number_game;
@@ -6,7 +7,7 @@ mod decimal_to_binary_and_hexadecimal_sample;
 mod write_data_to_local_db_sample;
 mod id_service;
 mod log_example;
-mod todo_api;
+mod todo_api; // Add the new todo_api module
 
 #[tokio::main]
 async fn main() {
@@ -16,6 +17,7 @@ async fn main() {
         "Convert Decimal to Binary and Hexadecimal",
         "Write a Sample Data to Local DB as Binary",
         "ID Service Example",
+        "Todo API Service", // Add the new option
         "Simple Log Example"
     ];
 
@@ -34,9 +36,13 @@ async fn main() {
                 write_data_to_local_db_sample::execute().expect("Unfortunately, we were unable to complete the writing task for db");
             },
             "ID Service Example" => {
-                // Call the start_id_service function and await its completion
                 if let Err(e) = id_service::start_id_service().await {
                     eprintln!("Error starting ID Service: {}", e);
+                }
+            },
+            "Todo API Service" => {
+                if let Err(e) = todo_api::start_todo_api().await {
+                    eprintln!("Error starting Todo API Service: {}", e);
                 }
             },
             "Simple Log Example" => {
