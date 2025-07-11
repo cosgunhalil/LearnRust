@@ -6,6 +6,7 @@ mod decimal_to_binary_and_hexadecimal_sample;
 mod write_data_to_local_db_sample;
 mod id_service;
 mod log_example;
+mod todo_api;
 
 #[tokio::main]
 async fn main() {
